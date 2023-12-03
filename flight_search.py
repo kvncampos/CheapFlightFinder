@@ -2,9 +2,17 @@ from wrapper import time_function
 
 
 class FlightSearch:
-    """This class is responsible for talking to the Flight Search API."""
+    """This class is responsible for talking to the Flight Search API.
 
-    def __init__(self, to_flights: list, homebase:str):
+    :param
+        - List of Sheet Data for Flight Search
+        - Str for Homebase(Departure Airport)
+
+    :returns
+        List of FlightData
+    """
+
+    def __init__(self, to_flights: list, homebase: str):
         import os
         self.tequila_api_key = os.environ.get('TEQUILA_API_KEY', 'Tequila API Key Not SET as ENV Variable.')
         self.flights = to_flights
@@ -26,6 +34,7 @@ class FlightSearch:
             target_price = obj.get('lowestPrice')
             print(f'City: {city}: Target Price: {target_price}')
 
+            # This query is unique, please reference Tequila Flight Search API and Adjust Accordingly
             tequila_endpoint = f'https://api.tequila.kiwi.com/v2/search?fly_from={self.homebase}&fly_to={city}&' \
                                f'date_from=01%2F01%2F2024&date_to=09%2F01%2F2024&nights_in_dst_from=3&' \
                                f'nights_in_dst_to=4&ret_from_diff_city=false&ret_to_diff_city=false&adults=1&' \

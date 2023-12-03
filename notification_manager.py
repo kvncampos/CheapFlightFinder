@@ -78,13 +78,16 @@ class NotificationSender:
         sender_email = os.environ.get('GMAIL', 'GMAIL Not SET as ENV Variable.')
         email_password = os.environ.get('GMAIL_APP_PASS', 'GMAIL PASS Not SET as ENV Variable.')
 
-        msg = MIMEText(body)
+        msg = MIMEText(body, 'html')
         msg['Subject'] = self.subject
         msg['From'] = sender_email
         msg['To'] = sender_email
+        # msg.attach(body_message)
+
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp_server:
             smtp_server.login(sender_email, email_password)
             smtp_server.sendmail(sender_email, sender_email, msg.as_string())
+
         print("Message sent!")
 
     def main(self):
