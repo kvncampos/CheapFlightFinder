@@ -1,3 +1,6 @@
+from wrapper import time_function
+
+
 class FlightData:
     # This class is responsible for structuring the flight data.
 
@@ -14,6 +17,7 @@ class FlightData:
                 deals.append(flight)
         return deals
 
+    @time_function
     def transform_data(self) -> str:
         from datetime import datetime
         deals = self.__find_deals()

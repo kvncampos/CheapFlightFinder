@@ -14,7 +14,7 @@ sheet_data = flights.json()['flights']
 print('------------------------------------------------------------------')
 # ------------------------ FETCH FLIGHT API DATA ------------------------
 print('Getting Flight Information...')
-search_flights = FlightSearch(flights=sheet_data)
+search_flights = FlightSearch(to_flights=sheet_data, homebase='DFW')
 results = search_flights.get_flight_info()
 print('------------------------------------------------------------------')
 # ------------------------ DATA VALIDATION FOR ONLY DEALS ------------------------
