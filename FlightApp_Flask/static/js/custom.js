@@ -173,7 +173,7 @@
 
 	$(function() {
 		// Calling Login Form
-		$("#login_form").click(function() {
+		$("#unsub_form").click(function() {
 			$(".social_login").hide();
 			$(".user_login").show();
 			return false;

@@ -9,50 +9,74 @@ CORS(app)
 # Dictionary to store emails
 user_emails = {}
 
-# Function to create a file if it doesn't exist
+
 def create_file_if_not_exists(file_path, default_content):
     if not os.path.exists(file_path):
         with open(file_path, 'w') as json_file:
             json.dump(default_content, json_file)
 
+
 # Check if the directory and file exist, create them if not
-emails_directory = 'flight_app/emails'
+emails_directory = 'emails'
 emails_file_path = os.path.join(emails_directory, 'user_emails.json')
 create_file_if_not_exists(emails_directory, {})
 create_file_if_not_exists(emails_file_path, {})
 
+
+def read_user_emails():
+    # Read the existing data from the JSON file
+    try:
+        with open(emails_file_path, 'r') as json_file:
+            return json.load(json_file)
+    except FileNotFoundError:
+        return {}
+
+
+def save_user_emails(user_emails):
+    # Save the updated dictionary to the JSON file
+    with open(emails_file_path, 'w') as json_file:
+        json.dump(user_emails, json_file)
+
+
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    message = None  # Initialize the message variable
-
     if request.method == 'POST':
         email = request.form.get('email')
-        action = request.form.get('action')
+        action = request.form.get('action')  # Change 'unsubscribe' or 'register' based on button names
 
-        if action == 'register' and email:
+        if email:
+            # Read the existing data from the JSON file
+            user_emails = read_user_emails()
+
             # Categorize the email
             email_category = 'GMAIL' if 'gmail' in email.casefold() else 'INVALID'
 
-            # Store the email in the dictionary
-            user_emails[email] = email_category
+            # Perform different actions based on the button clicked
+            if action == 'unsubscribe':
+                # Check if the email is in the dictionary before attempting to remove it
+                if email in user_emails:
+                    # Remove the email key from the dictionary
+                    del user_emails[email]
 
-            # Save the emails to a JSON file
-            with open(emails_file_path, 'w') as json_file:
-                json.dump(user_emails, json_file)
+                    # Save the updated emails to the JSON file
+                    save_user_emails(user_emails)
 
-            message = 'Registration successful!'
+                    return render_template('index.html', message='Unsubscribed successfully!')
+                else:
+                    # Handle the case where the email is not in the dictionary
+                    return render_template('index.html', message='Email not found for unsubscribing.')
 
-        elif action == 'delete' and email in user_emails:
-            # Remove the email entry
-            del user_emails[email]
+            elif action == 'register':
+                # Your register logic here
+                user_emails[email] = email_category
 
-            # Save the updated emails to a JSON file
-            with open(emails_file_path, 'w') as json_file:
-                json.dump(user_emails, json_file)
+                # Save the updated emails to the JSON file
+                save_user_emails(user_emails)
 
-            message = 'Unsubscribe successful!'
+                return render_template('index.html', message='Registration successful!')
 
-    return render_template('index.html', message=message)
+    return render_template('index.html')
+
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=8000)
