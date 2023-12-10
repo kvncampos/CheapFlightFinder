@@ -19,13 +19,13 @@ jobs:
 
       - name: Set up environment variables
         run: |
-          echo "CELL_NUMBER=${{ secrets.CELL_NUMBER }}" >> $GITHUB_ENV
-          echo "GMAIL=${{ secrets.GMAIL }}" >> $GITHUB_ENV
-          echo "GMAIL_APP_PASS=${{ secrets.GMAIL_APP_PASS }}" >> $GITHUB_ENV
-          echo "PROVIDER=${{ secrets.PROVIDER }}" >> $GITHUB_ENV
-          echo "SHEETY_API_KEY=${{ secrets.SHEETY_API_KEY }}" >> $GITHUB_ENV
-          echo "SHEETY_SPREADSHEET=${{ secrets.SHEETY_SPREADSHEET }}" >> $GITHUB_ENV
-          echo "TEQUILA_API_KEY=${{ secrets.TEQUILA_API_KEY }}" >> $GITHUB_ENV
+          echo "CELL_NUMBER='${{ secrets.CELL_NUMBER }}'" >> $GITHUB_ENV
+          echo "GMAIL='${{ secrets.GMAIL }}'" >> $GITHUB_ENV
+          echo "GMAIL_APP_PASS='${{ secrets.GMAIL_APP_PASS }}'" >> $GITHUB_ENV
+          echo "PROVIDER='${{ secrets.PROVIDER }}'" >> $GITHUB_ENV
+          echo "SHEETY_API_KEY='${{ secrets.SHEETY_API_KEY }}'" >> $GITHUB_ENV
+          echo "SHEETY_SPREADSHEET='${{ secrets.SHEETY_SPREADSHEET }}'" >> $GITHUB_ENV
+          echo "TEQUILA_API_KEY='${{ secrets.TEQUILA_API_KEY }}'" >> $GITHUB_ENV
 
       - name: Install Python packages
         run: |
