@@ -18,6 +18,16 @@ jobs:
       TEQUILA_API_KEY: ${{ secrets.TEQUILA_API_KEY }}
 
     steps:
+      - name: Print Environment Variables
+        run: |
+          echo "CELL_NUMBER=${CELL_NUMBER}"
+          echo "GMAIL=${GMAIL}"
+          echo "GMAIL_APP_PASS=${GMAIL_APP_PASS}"
+          echo "PROVIDER=${PROVIDER}"
+          echo "SHEETY_API_KEY=${SHEETY_API_KEY}"
+          echo "SHEETY_SPREADSHEET=${SHEETY_SPREADSHEET}"
+          echo "TEQUILA_API_KEY=${TEQUILA_API_KEY}"
+
       - name: Checkout repo content
         uses: actions/checkout@v2 # Checkout the repository content
 
