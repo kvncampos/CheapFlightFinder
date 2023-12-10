@@ -44,20 +44,7 @@ https://templatemo.com/tm-576-snapx-photography
                     <a href="index.html" class="logo">
                         <img src="static/images/logo.png" alt="SnapX Photography Template">
                     </a>
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Menu Start ***** -->
-                    <!-- <ul class="nav"> -->
-                        <!-- <li><a href="index.html" class="active">Home</a></li> -->
-                        <!-- <li class="has-sub"> -->
-                            <!-- <a href="javascript:void(0)">Photos &amp; Videos</a> -->
-                            <!-- <ul class="sub-menu"> -->
-                                <!-- <li><a href="contests.html">Contests</a></li> -->
-                                <!-- <li><a href="contest-details.html">Single Contest</a></li> -->
-                            <!-- </ul> -->
-                        <!-- </li> -->
-                        <!-- <li><a href="destinations.html">Categories</a></li> -->
-                        <!-- <li><a href="users.html">Users</a></li> -->
-                    <!-- </ul>    -->
+
                     <div class="border-button">
                       <a id="modal_trigger" href="#modal" class="sign-in-up"><i class="fa fa-user"></i> Sign Up</a>
                     </div>
@@ -74,7 +61,7 @@ https://templatemo.com/tm-576-snapx-photography
 
   <div id="modal" class="popupContainer" style="display:none;">
     <div class="popupHeader">
-        <span class="header_title">Login</span>
+        <span class="header_title">Sign Up For Deals!</span>
         <span class="modal_close"><i class="fa fa-times"></i></span>
     </div>
 
@@ -89,6 +76,9 @@ https://templatemo.com/tm-576-snapx-photography
             <div class="action_btns">
                 <div class="one_half last"><a href="#" id="register_form" class="btn">Sign up</a></div>
             </div>
+            <div class="action_btns">
+                <div class="one_half last"><a href="#" id="register_form" class="btn">Unsubscribe</a></div>
+            </div>
         </div>
 
         <!-- Register Form -->
@@ -102,6 +92,13 @@ https://templatemo.com/tm-576-snapx-photography
                     <div class="one_half"><a href="#" class="btn back_btn"><i class="fa fa-angle-double-left"></i> Back</a></div>
                     <div class="one_half last"><button type="submit" class="btn btn_red">Register</button></div>
                 </div>
+            </form>
+        </div>
+        <!-- Add a form for the deletion action -->
+        <div class="user_register">
+            <form id="deletionForm" action="" method="post">
+                <input type="hidden" name="action" value="delete">
+                <button type="submit" class="btn btn_red">Unsubscribe</button>
             </form>
         </div>
     </section>
