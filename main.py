@@ -45,6 +45,6 @@ print('------------------------------------------------------------------')
 
 # ------------------------ SEND EMAIL TO SMS ------------------------
 print("Sending SMS Text for Any Deals.")
-sms = NotificationSender()
-sms.send_email(body=message_deals)
-sms.send_email_to_all(body=message_deals, email_file='FlightApp_Flask/emails/user_emails.json')
+# sms = NotificationSender()
+# sms.send_email(body=message_deals)
+# sms.send_email_to_all(body=message_deals, email_file='FlightApp_Flask/emails/user_emails.json')

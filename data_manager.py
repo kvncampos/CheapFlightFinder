@@ -35,6 +35,13 @@ class DataManager:
             'Authorization': f'Bearer {self.sheety_api_key}'
         }
         response = requests.get(url=url, headers=headers)
-        sheet_data = response.json()['flights']
+        try:
+            sheet_data = response.json()['flights']
+            return sheet_data
 
-        return sheet_data
+        except KeyError as key:
+            if response.status_code == 402:
+                print('Rate-Limit Due to Free Account. Limited to 200 Requests.')
+            else:
+                print(f"{response}, {response.status_code}, {key}")
+            return exit(1)

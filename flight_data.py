@@ -24,7 +24,7 @@ class FlightData:
         deals = []
         for flight in self.flight_data:
             if not flight.get('data'):
-                print('No Deals.')
+                print(f'No Deals for {flight}.')
             else:
                 print("Deal Found.")
                 deals.append(flight)
