@@ -3,6 +3,7 @@ name: Run app.py
 on:
   schedule:
     - cron: '0 9 * * *' # At 09:00 every day
+  workflow_dispatch: # Add workflow_dispatch to manually trigger the workflow
 
 jobs:
   build:
