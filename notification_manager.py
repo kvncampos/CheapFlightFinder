@@ -1,7 +1,7 @@
 import json
 import smtplib, ssl
 import os
-import providers
+from Cell_Providers import providers
 # used for MMS
 from email import encoders
 from email.mime.base import MIMEBase
