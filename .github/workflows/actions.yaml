@@ -42,4 +42,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Execute py script # Run app.py
-        run: python main.py
+        run: |
+          export SHEETY_API_KEY=${{ secrets.SHEETY_API_KEY }}
+          export SHEETY_SPREADSHEET=${{ secrets.SHEETY_SPREADSHEET }}
+          python main.py
