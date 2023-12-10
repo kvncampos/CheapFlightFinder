@@ -16,7 +16,7 @@ def create_file_if_not_exists(file_path, default_content):
             json.dump(default_content, json_file)
 
 # Check if the directory and file exist, create them if not
-emails_directory = 'emails'
+emails_directory = 'flight_app/emails'
 emails_file_path = os.path.join(emails_directory, 'user_emails.json')
 create_file_if_not_exists(emails_directory, {})
 create_file_if_not_exists(emails_file_path, {})
