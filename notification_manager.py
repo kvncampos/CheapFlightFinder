@@ -1,3 +1,4 @@
+import json
 import smtplib, ssl
 import os
 import providers
@@ -89,6 +90,26 @@ class NotificationSender:
             smtp_server.sendmail(sender_email, sender_email, msg.as_string())
 
         print("Message sent!")
+
+    @time_function
+    def send_email_to_all(self, body: str, email_file):
+        sender_email = os.environ.get('GMAIL', 'GMAIL Not SET as ENV Variable.')
+        email_password = os.environ.get('GMAIL_APP_PASS', 'GMAIL PASS Not SET as ENV Variable.')
+        with open(email_file, 'r') as emails:
+            user_emails = json.loads(emails.read())
+
+        for sub in user_emails.keys():
+            msg = MIMEText(body, 'html')
+            msg['Subject'] = self.subject
+            msg['From'] = sender_email
+            msg['To'] = sub
+            # msg.attach(body_message)
+
+            with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp_server:
+                smtp_server.login(sender_email, email_password)
+                smtp_server.sendmail(sender_email, sender_email, msg.as_string())
+
+            print("Message sent!")
 
     def main(self):
         message = "hello world! Ran Directly from notifications_manager.py"

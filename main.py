@@ -15,7 +15,7 @@ Prerequisites:
 
 How to Run:
 1. Install dependencies: `pip install -r requirements.txt`
-2. Run the script: `python main.py`
+2. Run the script: `python app.py`
 
 Note: Ensure correct setup of environment variables before running the script.
 """
@@ -47,4 +47,4 @@ print('------------------------------------------------------------------')
 print("Sending SMS Text for Any Deals.")
 sms = NotificationSender()
 sms.send_email(body=message_deals)
-
+sms.send_email_to_all(body=message_deals, email_file='FlightApp_Flask/emails/user_emails.json')

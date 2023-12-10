@@ -20,7 +20,7 @@ pip install -r requirements.txt
 ```
 2. Run the Script:
 ```bash
-python main.py
+python app.py
 ```
 
 ## What the Script Does
